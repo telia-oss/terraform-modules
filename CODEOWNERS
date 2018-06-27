@@ -1,0 +1,2 @@
+# Default to devops group. Unless we have a more specific match.
+*       @telia-oss/terraform
