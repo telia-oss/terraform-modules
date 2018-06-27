@@ -1,2 +1,5 @@
-# Default to devops group. Unless we have a more specific match.
+# Default to terraform group. Unless we have a more specific match.
 *       @telia-oss/terraform
+
+# template
+template/* @itsdalmo
