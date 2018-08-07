@@ -16,12 +16,12 @@ variable "log_group_names" {
 
 variable "handler" {
   description = "The function entrypoint in the code."
-  default = "com.telia.aws.cloudwatchtoremotebucket.Handler::handleRequest"
+  default     = "com.telia.aws.cloudwatchtoremotebucket.Handler::handleRequest"
 }
 
 variable "runtime" {
   description = "The runtime for the Lambda. "
-  default = "java8"
+  default     = "java8"
 }
 
 variable "timeout" {
@@ -39,7 +39,7 @@ variable "lambda_s3_bucket" {
 }
 
 variable "s3_key" {
-  default = "cloudwatch-logs-remote-bucket-1.1.zip"
+  default     = "cloudwatch-logs-remote-bucket-1.1.zip"
   description = "The s3 key for the Lambda artifact."
 }
 
