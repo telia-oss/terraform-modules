@@ -3,53 +3,51 @@ variable "name_prefix" {
 }
 
 variable "filter_patterns" {
-  description = "List of CloudWatch filter patterns"
+  description = "List of Cloud Watch filter patterns"
   default     = []
   type        = "list"
 }
 
 variable "log_group_names" {
-  description = "List of Cloudwatch log group names"
+  description = "List of Cloud Watch log group names"
   default     = []
   type        = "list"
 }
 
-variable "lambda_handler" {
-  description = "The handler for the Lambda function"
+variable "handler" {
+  description = "The function entrypoint in the code."
+  default = "com.telia.aws.cloudwatchtoremotebucket.Handler::handleRequest"
 }
 
-variable "lamda_runtime" {
-  description = "The runetime for the Lambda function (java8, javascript etc)"
+variable "runtime" {
+  description = "The runtime for the Lambda. "
+  default = "java8"
 }
 
-variable "lambda_timeout_seconds" {
-  description = "Timeout for the lambda function that copies log entries to cloudwatch. Modify if you experience timeouts"
+variable "timeout" {
+  description = "Timeout for the lambda function that copies log entries to Cloud Watch. Modify if needed."
   default     = 30
 }
 
-variable "lambda_memory_size" {
-  description = "Memory allocation for the lambda function that copies log entries to cloudwatch. Modify if you experience out of memory errors"
+variable "memory_size" {
+  description = "Memory allocation for the lambda function. Modify if needed."
   default     = 512
 }
 
-variable "lambda_bucket" {
-  description = "The bucket where the lambda function that is a Cloud Watch subscription target, is uploaded"
+variable "lambda_s3_bucket" {
+  description = "The bucket where the lambda function that is a Cloud Watch subscription target is uploaded"
 }
 
-variable "lambda_artifact_s3_key" {
-  default     = "cloudwatch-logs-remote-bucket-1.0-SNAPSHOT.zip"
-  description = "The s3 key pointing to the Lambda function."
+variable "s3_key" {
+  default = "cloudwatch-logs-remote-bucket-1.1.zip"
+  description = "The s3 key for the Lambda artifact."
 }
 
 variable "log_bucket_name" {
-  description = "The bucket that the logs will be forwared to, and ingested by splunk. Defaults to production bucket"
+  description = "The bucket that the logs will be forwared to."
 }
 
 variable "split" {
-  description = "If true, split the cloudwatch event object into a list, list items get meta-data from the cloud watch event. (Log group, owner, Log Stream)"
+  description = "If true, split the Cloud Watch event object into a list, every list item gets meta-data from the cloud watch event. (Log group, owner, Log Stream)"
   default     = true
-}
-
-variable "lambda_name" {
-  description = "The name of the Lambda function that moves cloudwatch logs to S3 "
 }
