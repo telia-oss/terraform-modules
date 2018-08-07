@@ -47,7 +47,7 @@ variable "log_bucket_name" {
 
 variable "split" {
   description = "If true, split the cloudwatch event object into a list, list items get meta-data from the cloud watch event. (Log group, owner, Log Stream)"
-  default = true
+  default     = true
 }
 
 variable "lambda_name" {

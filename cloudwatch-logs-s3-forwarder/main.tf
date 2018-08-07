@@ -87,7 +87,7 @@ resource "aws_lambda_function" "bucket_forwarder" {
   environment {
     variables = {
       bucket_name = "${var.log_bucket_name}"
-      split = "${var.split == 1 ?"true": "false"}"
+      split       = "${var.split == 1 ?"true": "false"}"
     }
   }
 }
