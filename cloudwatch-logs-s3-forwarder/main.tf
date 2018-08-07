@@ -99,7 +99,7 @@ resource "aws_lambda_permission" "allow_cloudwatch" {
   principal     = "logs.amazonaws.com"
 }
 
-resource "aws_cloudwatch_log_subscription_filter" "test_lambdafunction_logfilter" {
+resource "aws_cloudwatch_log_subscription_filter" "lambdafunction_logfilters" {
   count           = "${length(var.filter_patterns)}"
   name            = "lambdafunction_logfilter_${element(var.log_group_names, count.index)}"
   log_group_name  = "${element(var.log_group_names, count.index)}"
