@@ -19,11 +19,6 @@ variable "handler" {
   default     = "com.telia.aws.cloudwatchtoremotebucket.Handler::handleRequest"
 }
 
-variable "runtime" {
-  description = "The runtime for the Lambda. "
-  default     = "java8"
-}
-
 variable "timeout" {
   description = "Timeout for the lambda function that copies log entries to Cloud Watch. Modify if needed."
   default     = 30

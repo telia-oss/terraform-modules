@@ -13,6 +13,6 @@ module "cloudwatch_splunk_lambda_subscription" {
   name_prefix      = "sample_log_forwarder"
   log_group_names  = "${keys(local.subscriptions)}"
   filter_patterns  = "${values(local.subscriptions)}"
-  lambda_s3_bucket = "artifact-bucket"
-  log_bucket_name  = "log-bucket"
+  lambda_s3_bucket = "telia-common-logs-prod-lambda"
+  log_bucket_name  = "telia-common-logs-prod-application-logs"
 }

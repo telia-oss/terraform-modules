@@ -80,7 +80,7 @@ resource "aws_lambda_function" "bucket_forwarder" {
   function_name = "${var.name_prefix}"
   role          = "${aws_iam_role.lambda_role.arn}"
   handler       = "${var.handler}"
-  runtime       = "${var.runtime}"
+  runtime       = "java8"
   timeout       = "${var.timeout}"
   memory_size   = "${var.memory_size}"
 
