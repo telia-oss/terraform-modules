@@ -1,15 +1,15 @@
 variable "name_prefix" {
-  description = "A prefix that will be added to resources so that they are unique"
+  description = "A prefix that will be added to resources so that they are unique."
 }
 
 variable "filter_patterns" {
-  description = "List of Cloud Watch filter patterns"
+  description = "List of Cloud Watch filter patterns."
   default     = []
   type        = "list"
 }
 
 variable "log_group_names" {
-  description = "List of Cloud Watch log group names"
+  description = "List of Cloud Watch log group names."
   default     = []
   type        = "list"
 }
@@ -30,7 +30,7 @@ variable "memory_size" {
 }
 
 variable "lambda_s3_bucket" {
-  description = "The bucket where the lambda function that is a Cloud Watch subscription target is uploaded"
+  description = "The bucket where the lambda function that is a Cloud Watch subscription target is uploaded."
 }
 
 variable "s3_key" {
@@ -43,6 +43,6 @@ variable "log_bucket_name" {
 }
 
 variable "split" {
-  description = "If true, split the Cloud Watch event object into a list, every list item gets meta-data from the cloud watch event. (Log group, owner, Log Stream)"
+  description = "If true, split the Cloud Watch event object into a list, every list item gets meta-data from the cloud watch event (Log group, owner, Log Stream)."
   default     = true
 }
