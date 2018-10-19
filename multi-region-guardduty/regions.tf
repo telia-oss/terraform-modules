@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "us-east-1" {
-  count    = "${contains(var.regions, "aws.us-east-1") ? 1 : 0}"
+  count    = "${contains(var.regions, "us-east-1") ? 1 : 0}"
   provider = "aws.us-east-1"
   enable   = true
 }
@@ -17,7 +17,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "us-east-2" {
-  count    = "${contains(var.regions, "aws.us-east-2") ? 1 : 0}"
+  count    = "${contains(var.regions, "us-east-2") ? 1 : 0}"
   provider = "aws.us-east-2"
   enable   = true
 }
@@ -29,7 +29,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "us-west-1" {
-  count    = "${contains(var.regions, "aws.us-west-1") ? 1 : 0}"
+  count    = "${contains(var.regions, "us-west-1") ? 1 : 0}"
   provider = "aws.us-west-1"
   enable   = true
 }
@@ -41,7 +41,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "us-west-2" {
-  count    = "${contains(var.regions, "aws.us-west-2") ? 1 : 0}"
+  count    = "${contains(var.regions, "us-west-2") ? 1 : 0}"
   provider = "aws.us-west-2"
   enable   = true
 }
@@ -53,7 +53,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "ca-central-1" {
-  count    = "${contains(var.regions, "aws.ca-central-1") ? 1 : 0}"
+  count    = "${contains(var.regions, "ca-central-1") ? 1 : 0}"
   provider = "aws.ca-central-1"
   enable   = true
 }
@@ -65,7 +65,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "eu-central-1" {
-  count    = "${contains(var.regions, "aws.eu-central-1") ? 1 : 0}"
+  count    = "${contains(var.regions, "eu-central-1") ? 1 : 0}"
   provider = "aws.eu-central-1"
   enable   = true
 }
@@ -77,7 +77,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "eu-west-1" {
-  count    = "${contains(var.regions, "aws.eu-west-1") ? 1 : 0}"
+  count    = "${contains(var.regions, "eu-west-1") ? 1 : 0}"
   provider = "aws.eu-west-1"
   enable   = true
 }
@@ -89,7 +89,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "eu-west-2" {
-  count    = "${contains(var.regions, "aws.eu-west-2") ? 1 : 0}"
+  count    = "${contains(var.regions, "eu-west-2") ? 1 : 0}"
   provider = "aws.eu-west-2"
   enable   = true
 }
@@ -101,7 +101,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "eu-west-3" {
-  count    = "${contains(var.regions, "aws.eu-west-3") ? 1 : 0}"
+  count    = "${contains(var.regions, "eu-west-3") ? 1 : 0}"
   provider = "aws.eu-west-3"
   enable   = true
 }
@@ -113,7 +113,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "ap-northeast-1" {
-  count    = "${contains(var.regions, "aws.ap-northeast-1") ? 1 : 0}"
+  count    = "${contains(var.regions, "ap-northeast-1") ? 1 : 0}"
   provider = "aws.ap-northeast-1"
   enable   = true
 }
@@ -125,7 +125,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "ap-northeast-2" {
-  count    = "${contains(var.regions, "aws.ap-northeast-2") ? 1 : 0}"
+  count    = "${contains(var.regions, "ap-northeast-2") ? 1 : 0}"
   provider = "aws.ap-northeast-2"
   enable   = true
 }
@@ -137,7 +137,7 @@ provider "aws" {
 }
 
 resource "aws_guardduty_detector" "ap-southeast-1" {
-  count    = "${contains(var.regions, "aws.ap-southeast-1") ? 1 : 0}"
+  count    = "${contains(var.regions, "ap-southeast-1") ? 1 : 0}"
   provider = "aws.ap-southeast-1"
   enable   = true
 }
