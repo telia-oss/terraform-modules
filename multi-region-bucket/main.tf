@@ -81,6 +81,7 @@ module "lambda" {
 
   environment {
     REPLICATION_REGIONS = "${join(",", var.replication_regions)}"
+    BUCKET_OBJECT_ACL   = "${var.bucket_acl}"
   }
 
   tags = "${var.tags}"
