@@ -34,7 +34,7 @@ variable "lambda_s3_bucket" {
 }
 
 variable "s3_key" {
-  default     = "cloudwatch-logs-remote-bucket-1.3.zip"
+  default     = "cloudwatch-logs-remote-bucket-1.4.zip"
   description = "The s3 key for the Lambda artifact."
 }
 
