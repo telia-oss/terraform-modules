@@ -7,7 +7,7 @@ variable "prefix" {
 }
 
 variable "parameter_group_name" {
-  default = "default.memcached1.4"
+  default = "default.memcached1.5"
 }
 
 variable "engine" {
@@ -35,7 +35,7 @@ variable "vpc_id" {
 }
 
 variable "subnet_ids" {
-  description = "ID of subnets for the RDS subnet group."
+  description = "ID of subnets for the elasticca subnet group."
   type        = "list"
 }
 

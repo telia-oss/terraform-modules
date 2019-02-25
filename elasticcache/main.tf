@@ -27,13 +27,3 @@ resource "aws_security_group" "main" {
 
   tags = "${merge(var.tags, map("Name", "${var.prefix}-memcached-sg"))}"
 }
-
-resource "aws_security_group_rule" "ingress" {
-  description              = "Terraformed security group rule."
-  security_group_id        = "${aws_security_group.main.id}"
-  type                     = "ingress"
-  protocol                 = "tcp"
-  from_port                = "${var.port}"
-  to_port                  = "${var.port}"
-  source_security_group_id = "${var.source_security_group_id}"
-}
