@@ -16,3 +16,7 @@ output "cluster_address" {
 output "cache_security_group_id" {
   value = "${aws_security_group.main.id}"
 }
+
+output "port" {
+  value = "${aws_elasticache_cluster.main.port}"
+}
