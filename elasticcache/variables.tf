@@ -6,12 +6,17 @@ variable "prefix" {
   default     = "main"
 }
 
-variable "parameter_group_name" {
-  default = "default.memcached1.5"
-}
-
+# Engine, enginve_version and parameter_group_name must be coherent.
 variable "engine" {
   default = "memcached"
+}
+
+variable "engine_version" {
+  default = "1.15.10"
+}
+
+variable "parameter_group_name" {
+  default = "default.memcached1.5"
 }
 
 variable "node_type" {
