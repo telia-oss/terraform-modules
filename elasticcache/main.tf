@@ -12,10 +12,12 @@ resource "aws_elasticache_cluster" "main" {
   cluster_id           = "${var.prefix}"
   parameter_group_name = "${var.parameter_group_name}"
   engine               = "${var.engine}"
-  node_type            = "${var.node_type}"
-  num_cache_nodes      = "${var.num_cache_nodes}"
-  az_mode              = "${var.az_mode}"
-  port                 = "${var.port}"
+  engine_version       = "${var.engine_version}"
+
+  node_type       = "${var.node_type}"
+  num_cache_nodes = "${var.num_cache_nodes}"
+  az_mode         = "${var.az_mode}"
+  port            = "${var.port}"
 
   tags = "${var.tags}"
 }
