@@ -5,13 +5,13 @@ variable "name_prefix" {
 variable "filter_patterns" {
   description = "List of Cloud Watch filter patterns."
   default     = []
-  type        = "list"
+  type        = list(string)
 }
 
 variable "log_group_names" {
   description = "List of Cloud Watch log group names."
   default     = []
-  type        = "list"
+  type        = list(string)
 }
 
 variable "handler" {
@@ -46,3 +46,4 @@ variable "split" {
   description = "If true, split the Cloud Watch event object into a list, every list item gets meta-data from the cloud watch event (Log group, owner, Log Stream)."
   default     = true
 }
+
