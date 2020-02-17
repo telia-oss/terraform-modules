@@ -15,7 +15,7 @@ test:
 	@for d in $$(find . -type f -name '*.tf' -not -path "**/.terraform/*" -exec dirname {} \; | sort -u); do \
 		cd $$d; \
 		terraform init -backend=false >> /dev/null; \
-		terraform validate -check-variables=false; \
+		terraform validate; \
 		if [ $$? -eq 1 ]; then \
 			echo "✗ terraform validate failed: $$d"; \
 			exit 1; \
@@ -27,7 +27,7 @@ test:
 	@for d in $$(find . -type f -name '*.tf' -path "./*/examples/*" -not -path "**/.terraform/*" -exec dirname {} \; | sort -u); do \
 		cd $$d; \
 		terraform init -backend=false >> /dev/null; \
-		terraform validate -check-variables=false; \
+		terraform validate; \
 		if [ $$? -eq 1 ]; then \
 			echo "✗ terraform validate failed: $$d"; \
 			exit 1; \
