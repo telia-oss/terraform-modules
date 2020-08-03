@@ -137,6 +137,10 @@ resource "aws_s3_bucket" "eu-west-1" {
 provider "aws" {
   alias  = "eu-north-1"
   region = "eu-north-1"
+
+  # terraform 0.11 used an old version of the AWS SDK that did not include
+  # eu-north-1 in the list of valid regions. I.e. we have to disable validation.
+  skip_region_validation = "true"
 }
 
 resource "aws_s3_bucket" "eu-north-1" {
