@@ -133,6 +133,21 @@ resource "aws_s3_bucket" "eu-west-1" {
   tags          = "${var.tags}"
 }
 
+# eu-north-1 --------------------------------------------------------------------------
+provider "aws" {
+  alias  = "eu-north-1"
+  region = "eu-north-1"
+}
+
+resource "aws_s3_bucket" "eu-north-1" {
+  count         = "${contains(var.replication_regions, "eu-north-1") ? 1 : 0}"
+  provider      = "aws.eu-north-1"
+  bucket        = "${var.name_prefix}-eu-north-1"
+  acl           = "${var.bucket_acl}"
+  force_destroy = true
+  tags          = "${var.tags}"
+}
+
 # eu-central-1 --------------------------------------------------------------------------
 provider "aws" {
   alias  = "eu-central-1"
