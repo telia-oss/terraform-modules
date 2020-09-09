@@ -11,8 +11,9 @@ locals {
 module "cloudwatch_splunk_lambda_subscription" {
   source           = "../.."
   name_prefix      = "sample_log_forwarder"
-  log_group_names  = "${keys(local.subscriptions)}"
-  filter_patterns  = "${values(local.subscriptions)}"
+  log_group_names  = keys(local.subscriptions)
+  filter_patterns  = values(local.subscriptions)
   lambda_s3_bucket = "artifact-bucket"
   log_bucket_name  = "log-bucket"
 }
+

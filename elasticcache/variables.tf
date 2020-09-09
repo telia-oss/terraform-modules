@@ -41,11 +41,11 @@ variable "vpc_id" {
 
 variable "subnet_ids" {
   description = "ID of subnets for the elasticca subnet group."
-  type        = "list"
+  type        = list(string)
 }
 
 variable "tags" {
   description = "A map of tags (key-value pairs) passed to resources."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }

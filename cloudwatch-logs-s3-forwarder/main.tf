@@ -16,6 +16,7 @@ resource "aws_iam_role" "lambda_role" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_policy" "allow_lambda_to_log" {
@@ -41,6 +42,7 @@ resource "aws_iam_policy" "allow_lambda_to_log" {
  ]
 }
 EOF
+
 }
 
 resource "aws_iam_policy" "allow_s3_puts" {
@@ -62,32 +64,33 @@ resource "aws_iam_policy" "allow_s3_puts" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_cw_attach" {
-  role       = "${aws_iam_role.lambda_role.name}"
-  policy_arn = "${aws_iam_policy.allow_lambda_to_log.arn}"
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = aws_iam_policy.allow_lambda_to_log.arn
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_s3_attach" {
-  role       = "${aws_iam_role.lambda_role.name}"
-  policy_arn = "${aws_iam_policy.allow_s3_puts.arn}"
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = aws_iam_policy.allow_s3_puts.arn
 }
 
 resource "aws_lambda_function" "bucket_forwarder" {
-  s3_bucket     = "${var.lambda_s3_bucket}"
-  s3_key        = "${var.s3_key}"
-  function_name = "${var.name_prefix}"
-  role          = "${aws_iam_role.lambda_role.arn}"
-  handler       = "${var.handler}"
+  s3_bucket     = var.lambda_s3_bucket
+  s3_key        = var.s3_key
+  function_name = var.name_prefix
+  role          = aws_iam_role.lambda_role.arn
+  handler       = var.handler
   runtime       = "java8"
-  timeout       = "${var.timeout}"
-  memory_size   = "${var.memory_size}"
+  timeout       = var.timeout
+  memory_size   = var.memory_size
 
   environment {
     variables = {
-      bucket_name = "${var.log_bucket_name}"
-      split       = "${var.split == 1 ?"true": "false"}"
+      bucket_name = var.log_bucket_name
+      split       = var.split == 1 ? "true" : "false"
     }
   }
 }
@@ -95,14 +98,15 @@ resource "aws_lambda_function" "bucket_forwarder" {
 resource "aws_lambda_permission" "allow_cloudwatch" {
   statement_id  = "AllowExecutionFromCloudWatch"
   action        = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.bucket_forwarder.function_name}"
+  function_name = aws_lambda_function.bucket_forwarder.function_name
   principal     = "logs.amazonaws.com"
 }
 
 resource "aws_cloudwatch_log_subscription_filter" "lambdafunction_logfilters" {
-  count           = "${length(var.filter_patterns)}"
+  count           = length(var.filter_patterns)
   name            = "lambdafunction_logfilter_${element(var.log_group_names, count.index)}"
-  log_group_name  = "${element(var.log_group_names, count.index)}"
-  filter_pattern  = "${element(var.filter_patterns, count.index)}"
-  destination_arn = "${aws_lambda_function.bucket_forwarder.arn}"
+  log_group_name  = element(var.log_group_names, count.index)
+  filter_pattern  = element(var.filter_patterns, count.index)
+  destination_arn = aws_lambda_function.bucket_forwarder.arn
 }
+
